@@ -22,7 +22,7 @@ public class Delivery {
 
     private String customerId;
 
-    private Integer quanity;
+    private Integer quantity;
 
     private Long orderId;
 
@@ -43,11 +43,12 @@ public class Delivery {
     public static void addToDeliveryList(OrderPlaced orderPlaced) {
         //implement business logic here:
 
-        /** Example 1:  new item 
+        /** Example 1:  new item */
         Delivery delivery = new Delivery();
+        delivery.setAddress(orderPlaced.getAddress());
+        delivery.setQuantity(orderPlaced.getQty());
+        delivery.setCustomerId(orderPlaced.getCustomerId());
         repository().save(delivery);
-
-        */
 
         /** Example 2:  finding and process
         
