@@ -11,7 +11,6 @@ import lombok.Data;
 @Entity
 @Table(name = "Delivery_table")
 @Data
-//<<< DDD / Aggregate Root
 public class Delivery {
 
     @Id
@@ -39,25 +38,13 @@ public class Delivery {
         return deliveryRepository;
     }
 
-    //<<< Clean Arch / Port Method
     public static void addToDeliveryList(OrderPlaced orderPlaced) {
-        //implement business logic here:
-
-        /** Example 1:  new item */
-      
-        /** Example 2:  finding and process
-        
-        repository().findById(orderPlaced.get???()).ifPresent(delivery->{
-            
-            delivery // do something
-            repository().save(delivery);
-
-
-         });
-        */
+        Delivery delivery = new Delivery();
+        delivery.setAddress(orderPlaced.getAddress());
+        delivery.setQuantity(orderPlaced.getQty());
+        delivery.setCustomerId(orderPlaced.getCustomerId());
+        repository().save(delivery);
 
     }
-    //>>> Clean Arch / Port Method
 
 }
-//>>> DDD / Aggregate Root
