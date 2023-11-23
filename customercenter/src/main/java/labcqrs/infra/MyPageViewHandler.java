@@ -38,23 +38,20 @@ public class MyPageViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenDeliveryStarted_then_UPDATE_1(
-        @Payload DeliveryStarted deliveryStarted
-    ) {
+    public void whenDeliveryStarted_then_UPDATE_1(@Payload DeliveryStarted deliveryStarted) {
         try {
             if (!deliveryStarted.validate()) return;
-            // view 객체 조회
+                // view 객체 조회
+            Optional<MyPage> myPageOptional = myPageRepository.findById(deliveryStarted.getOrderId());
 
-            List<MyPage> myPageList = myPageRepository.findByOrderId(
-                deliveryStarted.getOrderId()
-            );
-            for (MyPage myPage : myPageList) {
-                // view 객체에 이벤트의 eventDirectValue 를 set 함
-                myPage.setDeliveryStatus("배송됨");
+            if( myPageOptional.isPresent()) {
+                MyPage myPage = myPageOptional.get();
+            // view 객체에 이벤트의 eventDirectValue 를 set 함
+                myPage.setDeliveryStatus("Started");    
                 // view 레파지 토리에 save
                 myPageRepository.save(myPage);
             }
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
