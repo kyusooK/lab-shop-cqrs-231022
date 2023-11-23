@@ -35,12 +35,6 @@ public class Order {
     public void onPostPersist() {
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
-
-        // Get request from Order
-        //labcqrs.external.Order order =
-        //    Application.applicationContext.getBean(labcqrs.external.OrderService.class)
-        //    .getOrder(/** mapping value needed */);
-
     }
 
     @PreRemove
