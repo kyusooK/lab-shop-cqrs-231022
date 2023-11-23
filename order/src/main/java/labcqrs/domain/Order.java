@@ -36,8 +36,6 @@ public class Order {
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
 
-        OrderCancelled orderCancelled = new OrderCancelled(this);
-        orderCancelled.publishAfterCommit();
         // Get request from Order
         //labcqrs.external.Order order =
         //    Application.applicationContext.getBean(labcqrs.external.OrderService.class)
