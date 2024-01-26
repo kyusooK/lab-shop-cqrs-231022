@@ -47,7 +47,7 @@ public class MyPageViewHandler {
             if( myPageOptional.isPresent()) {
                 MyPage myPage = myPageOptional.get();
             // view 객체에 이벤트의 eventDirectValue 를 set 함
-                myPage.setDeliveryStatus("Started");    
+                myPage.setDeliveryStatus("배송됨");    
                 // view 레파지 토리에 save
                 myPageRepository.save(myPage);
             }
