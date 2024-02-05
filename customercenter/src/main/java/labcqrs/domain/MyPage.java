@@ -17,7 +17,9 @@ public class MyPage {
     private Long id;
 
     private Long orderId;
+    private String customerId;
     private String productId;
+    private int qty;
     private String deliveryStatus;
     private String orderStatus;
 }

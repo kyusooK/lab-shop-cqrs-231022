@@ -34,6 +34,7 @@ public class Order {
     @PostPersist
     public void onPostPersist() {
         OrderPlaced orderPlaced = new OrderPlaced(this);
+        orderPlaced.setStatus(OrderPlaced.class.getSimpleName());
         orderPlaced.publishAfterCommit();
     }
 

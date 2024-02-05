@@ -13,4 +13,5 @@ public class DeliveryStarted extends AbstractEvent {
     private String customerId;
     private Integer quantity;
     private Long orderId;
+    private String status;    
 }

@@ -16,18 +16,16 @@ public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String address;
-
     private String customerId;
-
     private Integer quantity;
-
     private Long orderId;
+    private String status;
 
     @PostPersist
     public void onPostPersist() {
         DeliveryStarted deliveryStarted = new DeliveryStarted(this);
+        deliveryStarted.setStatus(DeliveryStarted.class.getSimpleName());
         deliveryStarted.publishAfterCommit();
     }
 
